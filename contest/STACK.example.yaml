@@ -1,0 +1,19 @@
+# Power Game Contest — STACK.yaml example (copy + fill)
+# File before HAMMER. Material undeclared tooling = DQ-UNDECLARE.
+
+competitor_id: your-handle
+captain_contact: you@example.com   # reachable during stoppage
+agents:
+  - name: builder
+    runtime: cursor               # e.g. cursor | claude-code | custom | human
+    models: ["claude-sonnet"]     # or "local-weights"
+  - name: verifier
+    runtime: custom
+    models: ["local-weights"]
+humans_in_loop:
+  - role: approver
+    max_touch_pct: 10
+apis_and_spend:
+  - service: openai
+    purpose: codegen
+repo_or_package: https://github.com/you/pgc0-entry

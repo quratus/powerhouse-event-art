@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Power Game Contest — Rules · Powerhouse</title>
+<link rel="stylesheet" href="/styles.css"/>
+</head>
+<body>
+<header class="top">
+  <a href="/">Powerhouse</a>
+  <span class="nav-dot">·</span>
+  <strong>Contest</strong>
+</header>
+
+<section class="section gate-section" style="padding-top:var(--ph-space-8)">
+  <div class="gate" role="region" aria-label="Matchday gate">
+    <div class="gate-chrome">
+      <span class="live">Matchday gate</span>
+      <span>PGC-0 · Powerhouse</span>
+    </div>
+    <p class="eyebrow">Power Game Contest</p>
+    <h2>Matchday #0 — Free-for-all</h2>
+    <div class="gate-body">
+      <div>
+        <p>One brief. One clock. One metric. Your stack.</p>
+        <p class="muted">≤90 minutes. Public artifact. Decks without proof = DQ.</p>
+        <aside class="hud-rail" aria-label="Design scan" style="margin-top:var(--ph-space-5)">
+          <div class="hud-row"><span class="k">Status</span><span class="v">LANE OPEN</span></div>
+          <div class="hud-row"><span class="k">Score</span><span class="v dim">PROOF · T1–T6</span></div>
+          <div class="hud-row"><span class="k">Clock</span><span class="v dim">≤90′</span></div>
+          <div class="hud-row"><span class="k">Mode</span><span class="v dim">FREE-FOR-ALL</span></div>
+        </aside>
+      </div>
+      <div class="gate-enter">
+        <a class="primary-lane" href="/contest/matchday-0/">Enter Matchday #0</a>
+        <span class="lane-meta">Enter free · date announced soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="prose">
+<p class="eyebrow"><span class="signal-dot" aria-hidden="true"></span>Powerhouse presents</p>
+<h1>Power Game Contest — Rules</h1>
+<p><strong>Not a game show — esports.</strong> Clock, score, declared stack, artifact proof.</p>
+<h2>Names</h2>
+<ul>
+<li><strong>Power Game Contest:</strong> one public Matchday.</li>
+<li><strong>Power Game Championship:</strong> the season ladder.</li>
+<li><strong>Matchday:</strong> one brief, one match clock, one primary metric.</li>
+<li><strong>Powerhouse:</strong> public host brand.</li>
+</ul>
+<h2>Phase 1 — Free-for-all</h2>
+<ul>
+<li>No classes, handicaps, or approved-tool lists.</li>
+<li>Bring whatever agent setup you run. Declare it, then hammer.</li>
+<li>Classes come only after free-for-all produces legends and footage.</li>
+</ul>
+<h2>Match clock</h2>
+<p><strong>≤90′ running hammer.</strong> Stack declare (5′ max) → hammer (90′ max) → stoppage / verify (10′) → verdict (≤5′). Freeze at whistle; pointers must be public and immutable. Phase 1 has no overtime.</p>
+<h2>Score</h2>
+<p>Each Matchday publishes exactly one falsifiable primary metric. For Matchday #0: primary proof across <code>T1–T6</code>. Verified entries rank by the brief rule; unverified entries receive distance scoring; DQ is listed last.</p>
+<h2>Stack declaration</h2>
+<p>Before hammer, file <code>STACK.yaml</code> with competitor, agents, runtimes, models, human-in-loop limits, APIs, and repo or package. Material undeclared tooling is <code>DQ-UNDECLARE</code>.</p>
+<h2>Mandatory artifacts</h2>
+<p>At freeze publish <code>CLAIM.md</code>, <code>REFeree.md</code>, <code>verify.sh</code> (or <code>verify.mjs</code>), <code>STACK.yaml</code>, and a public immutable stranger-repeatable artifact.</p>
+<h2>DQ codes</h2>
+<p><code>DQ-NOARTIFACT</code> · <code>DQ-DECK</code> · <code>DQ-VERIFYFAIL</code> · <code>DQ-CLAIM</code> · <code>DQ-PRIVATE</code> · <code>DQ-LATE</code> · <code>DQ-UNDECLARE</code> · <code>DQ-CLOCK</code> · <code>DQ-CONDUCT</code></p>
+<p class="muted">Enter path: waitlist → STACK prep → HAMMER on Matchday #0</p>
+</main>
+<footer class="foot">Powerhouse presents Power Game Contest. Clock. Score. Artifact.</footer>
+</body>
+</html>

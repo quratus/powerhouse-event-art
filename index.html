@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Powerhouse — Live agent nights</title>
+<meta name="description" content="Powerhouse — the night for agent stacks. Enter free. Get the date alert. Live on Twitch and Discord."/>
+<link rel="stylesheet" href="/styles.css"/>
+<style>
+  .poster-wrap{margin:0 auto;max-width:var(--ph-measure);padding:0 var(--ph-gutter) var(--ph-space-6);}
+  .poster-wrap img{width:100%;height:auto;border-radius:var(--ph-radius-md);border:1px solid var(--ph-line);display:block;}
+  .poster-caption{font-size:0.875rem;color:var(--ph-mute);margin-top:var(--ph-space-3);text-align:center;}
+</style>
+</head>
+<body>
+<header class="top">
+  <strong>Powerhouse</strong>
+  <span class="nav-dot">·</span>
+  <a href="/contest/matchday-0/#enter">Enter free</a>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-hud">
+    <span class="hud-corner-tr" aria-hidden="true"></span>
+    <span class="hud-corner-bl" aria-hidden="true"></span>
+    <div class="hero-scan" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="signal-dot" aria-hidden="true"></span>LIVE ESPORTS NIGHT</p>
+        <h1>Powerhouse</h1>
+        <p class="sub">The night for agent stacks.</p>
+        <p class="deck">Watch how people orchestrate agents under a ninety-minute clock — Twitch and Discord. Or get on the floor yourself.</p>
+        <div class="ctas">
+          <a class="btn" href="/contest/matchday-0/#enter">Enter free</a>
+          <a class="btn secondary" href="#waitlist">Get the date alert</a>
+        </div>
+      </div>
+      <aside class="hud-rail" aria-label="Tonight’s format">
+        <div class="hud-row"><span class="k">Format</span><span class="v">LIVE NIGHT</span></div>
+        <div class="hud-row"><span class="k">Clock</span><span class="v dim">90 MIN</span></div>
+        <div class="hud-row"><span class="k">Field</span><span class="v dim">STREAM + CHAT</span></div>
+        <div class="hud-row"><span class="k">Status</span><span class="v dim">ENTERING OPEN</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="poster-wrap">
+  <img src="/event/poster-powerhouse-0.png" alt="Powerhouse Matchday #0 — free-for-all, 90 minutes"/>
+  <p class="poster-caption">Entering is open. Night date soon — we’ll alert you when it’s set.</p>
+</div>
+
+<section class="section">
+  <div class="proof-stack">
+    <div class="proof-item">
+      <h2>What you get</h2>
+      <p>A shot to prove your agent setup in public — and a night worth watching if you’re in the chat.</p>
+    </div>
+    <div class="proof-item">
+      <h2>What it is not</h2>
+      <p class="muted">Not a slide deck contest. Not “AI vibes.” Not homework without a whistle.</p>
+    </div>
+    <div class="proof-item">
+      <h2>What’s next</h2>
+      <p>Enter now. We’ll post the stream date here and to the alert list. Prep guide is on the Matchday page.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section waitlist-section" id="waitlist">
+  <div class="waitlist-well">
+    <p class="eyebrow">Alerts</p>
+    <h2>Get the date alert.</h2>
+    <p class="muted">Enter free first if you’re competing. Alerts if you’re watching.</p>
+    <form id="waitlist-form">
+      <input required type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Work email"/>
+      <input type="text" name="runtime" placeholder="Cursor / Claude Code / custom / other" aria-label="What you build with"/>
+      <button class="btn" type="submit">Notify me</button>
+      <p id="status" class="muted" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="section gate-section" id="contest">
+  <div class="gate" role="region" aria-label="Matchday entry">
+    <div class="gate-chrome">
+      <span class="live">Open for entry</span>
+      <span>Matchday #0</span>
+    </div>
+    <p class="eyebrow">First night</p>
+    <h2>Matchday #0 — the night</h2>
+    <div class="gate-body">
+      <div>
+        <p>Live on Twitch/Discord. Ninety minutes. Enter free → we ping you when the night is set.</p>
+        <p class="muted">Entering is open. Night date soon — we’ll alert you when it’s set.</p>
+        <div class="gate-links">
+          <a href="/contest/">How it works</a>
+          <a href="/contest/matchday-0/">Full brief</a>
+        </div>
+      </div>
+      <div class="gate-enter">
+        <a class="primary-lane" href="/contest/matchday-0/#enter">Enter free</a>
+        <span class="lane-meta">Date announced soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">Powerhouse — live agent nights. Clock. Crowd. Proof.</footer>
+<script>
+const form = document.getElementById('waitlist-form');
+const status = document.getElementById('status');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  status.textContent = 'Submitting…';
+  const data = Object.fromEntries(new FormData(form).entries());
+  try {
+    const res = await fetch('/api/waitlist', { method: 'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(data) });
+    if (!res.ok) throw new Error('bad status');
+    status.textContent = 'You’re on the list. We’ll send the date when it’s set.';
+    status.className = 'ok'; form.reset();
+  } catch (err) {
+    const key = 'powerhouse-waitlist';
+    const prev = JSON.parse(localStorage.getItem(key) || '[]');
+    prev.push({ ...data, at: new Date().toISOString() });
+    localStorage.setItem(key, JSON.stringify(prev));
+    status.textContent = 'You’re on the list. We’ll send the date when it’s set.';
+    status.className = 'ok';
+  }
+});
+</script>
+</body>
+</html>

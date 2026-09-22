@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/contest/matchday-0", "destination": "/contest/matchday-0.html" },
+    { "source": "/contest/matchday-0/", "destination": "/contest/matchday-0.html" }
+  ]
+}
